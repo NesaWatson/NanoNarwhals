@@ -12,6 +12,12 @@ public class gameManager : MonoBehaviour
 
     [SerializeField] GameObject activeMenu;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject winMenu;
+    [SerializeField] GameObject loseMenu;
+
+    public GameObject playerSpawnPos;
+
+    [SerializeField] int enemiesRemaining;
 
     bool isPaused;
 
@@ -47,5 +53,27 @@ public class gameManager : MonoBehaviour
         isPaused = !isPaused;
         activeMenu.SetActive(isPaused);
         activeMenu = null;
+    }
+    IEnumerator youWin()
+    {
+        yield return new WaitForSeconds(3);
+        statePause();
+        activeMenu = winMenu;
+        activeMenu.SetActive(isPaused);
+    }
+    public void updateGameGoal(int amount)
+    {
+        enemiesRemaining += amount;
+
+        if (enemiesRemaining <= 0)
+        {
+            StartCoroutine(youWin());
+        }
+    }
+    public void youLose()
+    {
+        statePause();
+        activeMenu = loseMenu;
+        activeMenu.SetActive(isPaused);
     }
 }

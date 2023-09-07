@@ -17,15 +17,15 @@ public class enemyAI : MonoBehaviour, IDamage
 
     Vector3 playerDir;
     Vector3 pushBack;
-    bool playerInRange;
+    bool canSeePlayer;
     bool isAttacking;
     void Start()
     {
-        
+        gameManager.instance.updateGameGoal(1);
     }
     void Update()
     {
-        if(playerInRange)
+        if(canSeePlayer)
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
 
@@ -43,14 +43,26 @@ public class enemyAI : MonoBehaviour, IDamage
             agent.SetDestination(gameManager.instance.player.transform.position); 
         }
     }
+    bool CanSeePlayer()
+    {
+        Ray ray = new Ray(transform.position, playerDir);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true; 
+            }
+        }
+        return false; 
+    }
     IEnumerator attack()
     {
         isAttacking = true;
         Instantiate(shuriken, attackPos.position, transform.rotation); 
         yield return new WaitForSeconds(attackRate);
         isAttacking = false; 
-
-
     }
     IEnumerator flashDamage()
     {
@@ -67,21 +79,28 @@ public class enemyAI : MonoBehaviour, IDamage
     {
         HP -= amount;
         StartCoroutine(flashDamage());
-
-        Destroy(gameObject);
+        if (HP <= 0)
+        {
+            gameManager.instance.updateGameGoal(-1);
+            Destroy(gameObject);
+        }
+    }
+    public void physics(Vector3 dir)
+    {
+        agent.velocity += dir / 3;
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
+            canSeePlayer = true;
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
+            canSeePlayer = false;
         }
     }
 }

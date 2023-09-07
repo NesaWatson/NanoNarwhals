@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IDamage
 {
     
     [SerializeField] CharacterController characterController;
@@ -23,13 +23,13 @@ public class playerController : MonoBehaviour
     private bool isFiring;
     private int jumps;
     private Vector3 movement;
+    private Vector3 pushBack;
     private Vector3 velocity;
 
     void Start()
     {
-        
+        spawnPlayer();
     }
-
     
     void Update()
     {
@@ -62,7 +62,7 @@ public class playerController : MonoBehaviour
             velocity.y += jumpHeight;
         }
         velocity.y += gravityPull * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
+        characterController.Move((velocity + pushBack)  * Time.deltaTime);
 
     }
 
@@ -85,9 +85,22 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(fireRate);
         isFiring = false;
     }
-
+  
     public void takeDamage(int damage) 
     {
+
         HP -= damage;
+
+        if (HP <= 0)
+        {
+            gameManager.instance.youLose();
+        }
+    }
+    public void spawnPlayer()
+    {
+        characterController.enabled = false;
+        transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        characterController.enabled = true;
     }
 }
+
