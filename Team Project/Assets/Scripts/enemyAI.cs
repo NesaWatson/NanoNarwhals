@@ -60,7 +60,7 @@ public class enemyAI : MonoBehaviour, IDamage
     IEnumerator attack()
     {
         isAttacking = true;
-        Instantiate(shuriken, attackPos.position, transform.rotation); 
+        GameObject newShuriken = Instantiate(shuriken, attackPos.position, transform.rotation); 
         yield return new WaitForSeconds(attackRate);
         isAttacking = false; 
     }
