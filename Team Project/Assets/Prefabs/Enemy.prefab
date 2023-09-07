@@ -1575,7 +1575,7 @@ MonoBehaviour:
   HP: 5
   targetFaceSpeed: 5
   attackRate: 10
-  shuriken: {fileID: 7324298137312803527, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
+  shuriken: {fileID: 2125998969662733187, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
 --- !u!95 &3332614678009233132
 Animator:
   serializedVersion: 5
@@ -1635,7 +1635,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

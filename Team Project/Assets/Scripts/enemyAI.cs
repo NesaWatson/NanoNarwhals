@@ -48,8 +48,11 @@ public class enemyAI : MonoBehaviour, IDamage
         Ray ray = new Ray(transform.position, playerDir);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        LayerMask layerMask = ~LayerMask.GetMask("Enemy");
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
+            Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Player"))
             {
                 return true; 

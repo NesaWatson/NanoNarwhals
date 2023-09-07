@@ -23,10 +23,13 @@ public class shuriken : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Shuriken collided with: " + other.name);
+
         IDamage damageable = other.GetComponent<IDamage>();
 
-        if (damageable != null)
+        if (damageable != null && other.gameObject != shooter)
         {
+            Debug.Log("Shuriken damaged: " + other.name);
             damageable.takeDamage(damage);
         }
 
