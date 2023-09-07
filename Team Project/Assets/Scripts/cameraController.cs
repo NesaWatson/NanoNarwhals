@@ -23,7 +23,7 @@ public class cameraController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity;
 
         if (invertY) xRotation += mouseY;
-        else xRotation -= mouseX;
+        else xRotation -= mouseY;
 
         xRotation = Mathf.Clamp(xRotation, verticalMin, verticalMax);
         transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
