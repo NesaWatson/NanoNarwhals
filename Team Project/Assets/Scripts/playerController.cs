@@ -55,7 +55,7 @@ public class playerController : MonoBehaviour
         if (playerOnGround && velocity.y < 0) 
         {
             jumpAmount = 0;
-            velocity.y = 0;
+            velocity.y = 0f;
         }
 
         movement = Input.GetAxis("Horizontal") * transform.right +

@@ -1098,6 +1098,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Type 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4800006787394614627, guid: 322e67053bc7331489d664ecdc18d5bd, type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800006787394614627, guid: 322e67053bc7331489d664ecdc18d5bd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1840,6 +1848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Type 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7041082148310551085, guid: 9e93ed68325864445b9b0fb61d3f2bfc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7330500681237715009, guid: 9e93ed68325864445b9b0fb61d3f2bfc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.000002
@@ -1932,6 +1944,10 @@ PrefabInstance:
     - target: {fileID: 5677280383397198031, guid: 8aae4ed9c4b139849b71fb773c02e733, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017024719364389851, guid: 8aae4ed9c4b139849b71fb773c02e733, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8171132882541610713, guid: 8aae4ed9c4b139849b71fb773c02e733, type: 3}
       propertyPath: m_Name
