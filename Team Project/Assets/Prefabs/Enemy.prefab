@@ -1574,7 +1574,7 @@ MonoBehaviour:
   attackPos: {fileID: 4587804159985772607}
   HP: 5
   targetFaceSpeed: 5
-  attackRate: 1
+  attackRate: 10
   shuriken: {fileID: 7324298137312803527, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
 --- !u!95 &3332614678009233132
 Animator:
