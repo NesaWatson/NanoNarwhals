@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class buttonFuctions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void resume()
     {
-       Cubemap= 1;
+        gameManager.instance.stateUnpause();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void restart()
     {
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameManager.instance.stateUnpause();
+    }
+    public void quit()
+    {
+        Application.Quit();
     }
 }
