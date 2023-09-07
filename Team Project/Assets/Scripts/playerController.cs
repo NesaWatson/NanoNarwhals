@@ -16,11 +16,11 @@ public class playerController : MonoBehaviour
 
 
     [SerializeField] float fireRate;
-    [SerializeField] int fireDamage;
-    [SerializeField] int fireDistance;
+    [SerializeField] int gunDamage;
+    [SerializeField] int shootDistance;
 
     private bool playerOnGround;
-    private bool playerFiring;
+    private bool isFiring;
     private int jumps;
     private Vector3 movement;
     private Vector3 velocity;
@@ -33,7 +33,12 @@ public class playerController : MonoBehaviour
     
     void Update()
     {
-        
+        moving();
+
+        if (Input.GetButton("Fire1") && !isFiring) 
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     void moving()
@@ -59,5 +64,30 @@ public class playerController : MonoBehaviour
         velocity.y += gravityPull * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
+    }
+
+    IEnumerator shoot()
+    {
+        isFiring = true;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)),
+            out hit, shootDistance))
+        {
+            IDamage canDamage = hit.collider.GetComponent<IDamage>();
+
+            if (canDamage != null) 
+            {
+                canDamage.doDamage(gunDamage);
+            }
+        }
+        yield return new WaitForSeconds(fireRate);
+        isFiring = false;
+    }
+
+    public void doDamage(int damage) 
+    {
+        HP -= damage;
     }
 }
