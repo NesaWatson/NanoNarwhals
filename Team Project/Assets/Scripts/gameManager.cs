@@ -25,6 +25,7 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
+        playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         playerScript = player.GetComponent<playerController>();
     }
 
