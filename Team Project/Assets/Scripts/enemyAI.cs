@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyAI : MonoBehaviour
+public class enemyAI : MonoBehaviour, IDamage
 {
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
@@ -27,7 +27,23 @@ public class enemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(playerInRange)
+        {
+            playerDir = gameManager.instance.player.transform.position - transform.position;
+
+            if((agent.remainingDistance <= agent.stoppingDistance) )
+            {
+                faceTarget(); 
+
+                if(!isAttacking )
+                {
+                    {
+                        StartCoroutine(attack()); 
+                    }
+                }
+            }
+            agent.SetDestination(gameManager.instance.player.transform.position); 
+        }
     }
     IEnumerator attack()
     {
@@ -48,5 +64,26 @@ public class enemyAI : MonoBehaviour
     {
         Quaternion rot = Quaternion.LookRotation(playerDir); 
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
+    }
+    public void takeDamage(int amount)
+    {
+        HP -= amount;
+        StartCoroutine(flashDamage());
+
+        Destroy(gameObject);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+        }
     }
 }

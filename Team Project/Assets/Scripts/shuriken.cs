@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class shuriken : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Rigidbody rb; 
+
+    [SerializeField] int damage;
+    [SerializeField] int speed;
+    [SerializeField] int destroyTime; 
     void Start()
     {
-        
+        rb.velocity = transform.forward * speed; 
+        Destroy(gameObject, destroyTime);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
