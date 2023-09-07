@@ -14,6 +14,12 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int jumpAmount;
     [SerializeField] float gravityPull;
 
+    [SerializeField] float crouchSpeed;
+    [SerializeField] float crouchHeight;
+    [SerializeField] float standingHeight;
+
+    private bool isCrouching = false;
+
 
     [SerializeField] float fireRate;
     [SerializeField] int gunDamage;
@@ -33,7 +39,8 @@ public class playerController : MonoBehaviour, IDamage
     
     void Update()
     {
-        moving();
+        HandleMovement();
+        HandleCrouch();
 
         if (Input.GetButton("Fire1") && !isFiring) 
         {
@@ -41,18 +48,21 @@ public class playerController : MonoBehaviour, IDamage
         }
     }
 
-    void moving()
+    void HandleMovement()
     {
         playerOnGround = characterController.isGrounded;
 
         if (playerOnGround && velocity.y < 0) 
         {
             jumpAmount = 0;
-            velocity.y = 0;
+            velocity.y = 0f;
         }
 
         movement = Input.GetAxis("Horizontal") * transform.right +
             Input.GetAxis("Vertical") * transform.forward;
+
+        float currentSpeed = isCrouching ? crouchSpeed
+            * characterSpeed : characterSpeed;
 
         characterController.Move(movement * Time.deltaTime * characterSpeed);
 
@@ -64,6 +74,27 @@ public class playerController : MonoBehaviour, IDamage
         velocity.y += gravityPull * Time.deltaTime;
         characterController.Move((velocity + pushBack)  * Time.deltaTime);
 
+    }
+
+    void HandleCrouch()
+    {
+        if (Input.GetButtonDown("Crouch"))
+        {
+            ToggleCrouch();
+        }
+    }
+
+    void ToggleCrouch()
+    {
+        isCrouching = !isCrouching;
+
+        if (isCrouching)
+        {
+            characterController.height = characterController.height/2;
+            characterSpeed = crouchSpeed;
+        }
+        else characterController.height = standingHeight;
+        characterSpeed = 8.0f;
     }
 
     IEnumerator shoot()
