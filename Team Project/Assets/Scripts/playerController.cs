@@ -34,6 +34,11 @@ public class playerController : MonoBehaviour
     void Update()
     {
         moving();
+
+        if (Input.GetButton("Fire1") && !isFiring) 
+        {
+            StartCoroutine(shoot());
+        }
     }
 
     void moving()
