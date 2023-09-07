@@ -86,7 +86,7 @@ public class playerController : MonoBehaviour
         isFiring = false;
     }
 
-    public void doDamage(int damage) 
+    public void takeDamage(int damage) 
     {
         HP -= damage;
     }
