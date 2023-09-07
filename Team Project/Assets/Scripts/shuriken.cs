@@ -16,6 +16,13 @@ public class shuriken : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        IDamage damageable = other.GetComponent<IDamage>();
+
+        if (damageable != null)
+        {
+            damageable.takeDamage(damage);
+        }
+
         Destroy(gameObject); 
     }
 

@@ -29,7 +29,7 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             playerDir = gameManager.instance.player.transform.position - transform.position;
 
-            if((agent.remainingDistance <= agent.stoppingDistance) )
+            if(agent.remainingDistance <= agent.stoppingDistance)
             {
                 faceTarget(); 
 
