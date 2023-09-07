@@ -12,6 +12,8 @@ public class enemyAI : MonoBehaviour, IDamage
     [SerializeField] int HP;
     [SerializeField] int targetFaceSpeed;
 
+    [SerializeField] float wanderRadius;
+    [SerializeField] float wanderTime;
     [SerializeField] float attackRate;
     [SerializeField] GameObject shuriken;
 
@@ -19,9 +21,11 @@ public class enemyAI : MonoBehaviour, IDamage
     Vector3 pushBack;
     bool canSeePlayer;
     bool isAttacking;
+    private float timer;
     void Start()
     {
         gameManager.instance.updateGameGoal(1);
+        timer = wanderTime;
     }
     void Update()
     {
@@ -42,6 +46,29 @@ public class enemyAI : MonoBehaviour, IDamage
             }
             agent.SetDestination(gameManager.instance.player.transform.position); 
         }
+        else
+        {
+            Wander();
+        }
+    }
+    void Wander()
+    {
+        timer += Time.deltaTime;
+
+        if(timer >= wanderTime )
+        {
+            Vector3 newPos = randomNav(transform.position, wanderRadius, -1);
+            agent.SetDestination(newPos);
+            timer = 0;
+        }
+    }
+    Vector3 randomNav(Vector3 origin, float dist, int layerMask)
+    {
+        Vector3 randDir = Random.insideUnitSphere * dist;
+        randDir += origin;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randDir, out hit, dist, layerMask);
+        return hit.position;
     }
     bool CanSeePlayer()
     {
