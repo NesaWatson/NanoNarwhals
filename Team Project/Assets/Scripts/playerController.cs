@@ -79,7 +79,7 @@ public class playerController : MonoBehaviour
 
             if (canDamage != null) 
             {
-                canDamage.doDamage(gunDamage);
+                canDamage.takeDamage(gunDamage);
             }
         }
         yield return new WaitForSeconds(fireRate);

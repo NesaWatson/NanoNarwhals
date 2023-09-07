@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 1591883732852556373}
   - component: {fileID: 1704138804258873801}
   - component: {fileID: 107026956156838627}
+  - component: {fileID: -6636988355476291830}
   m_Layer: 0
   m_Name: Shuriken
   m_TagString: Untagged
@@ -153,10 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35776f766d4735640b235572d556ed5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  damage: 0
-  speed: 0
-  destroyTime: 0
+  rb: {fileID: -6636988355476291830}
+  damage: 1
+  speed: 5
+  destroyTime: 3
 --- !u!33 &1591883732852556373
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -228,3 +229,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9999999, y: 1.4574537, z: 0}
   m_Center: {x: -0.0000000028755205, y: -0.22872464, z: -0.49998146}
+--- !u!54 &-6636988355476291830
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324298137312803527}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
