@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7230169495280411180}
   m_Layer: 0
   m_Name: PlayerSpawnPos
-  m_TagString: Untagged
+  m_TagString: Player Spawn Pos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

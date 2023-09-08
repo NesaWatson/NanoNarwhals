@@ -54,7 +54,7 @@ public class playerController : MonoBehaviour, IDamage
 
         if (playerOnGround && velocity.y < 0) 
         {
-            jumpAmount = 0;
+            jumps =0;
             velocity.y = 0f;
         }
 
