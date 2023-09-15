@@ -722,9 +722,13 @@ MonoBehaviour:
   model: {fileID: 6822325971712528143}
   agent: {fileID: 4992389878966111137}
   attackPos: {fileID: 6707865561457549028}
+  headPos: {fileID: 0}
   HP: 10
   targetFaceSpeed: 8
-  attackRate: 2
+  viewAngle: 45
+  wanderRadius: 50
+  wanderTime: 25
+  attackRate: 0.5
   shuriken: {fileID: 2125998969662733187, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
 --- !u!95 &1993402249443447335
 Animator:

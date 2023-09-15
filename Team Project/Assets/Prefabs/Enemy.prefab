@@ -1533,7 +1533,7 @@ GameObject:
   - component: {fileID: 4351582039832945136}
   - component: {fileID: 8017024719364389851}
   - component: {fileID: 4187214775143249653}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1572,9 +1572,13 @@ MonoBehaviour:
   model: {fileID: 7318902349036753072}
   agent: {fileID: 4187214775143249653}
   attackPos: {fileID: 4587804159985772607}
+  headPos: {fileID: 0}
   HP: 5
   targetFaceSpeed: 5
-  attackRate: 10
+  viewAngle: 90
+  wanderRadius: 100
+  wanderTime: 100
+  attackRate: 0.5
   shuriken: {fileID: 2125998969662733187, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
 --- !u!95 &3332614678009233132
 Animator:

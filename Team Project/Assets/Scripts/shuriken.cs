@@ -18,7 +18,7 @@ public class shuriken : MonoBehaviour
     }
     void Start()
     {
-        rb.velocity = transform.forward * speed; 
+        rb.velocity = (gameManager.instance.player.transform.position - transform.forward).normalized * speed;
         Destroy(gameObject, destroyTime);
     }
     private void OnTriggerEnter(Collider other)
