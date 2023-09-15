@@ -98,32 +98,7 @@ public class enemyAI : MonoBehaviour, IDamage
         }
         agent.stoppingDistance = 0;
         return false;
-    }
-    //Vector3 randomNav(Vector3 origin, float dist, int layerMask)
-    //{
-    //    Vector3 randDir = Random.insideUnitSphere * dist;
-    //    randDir += origin;
-    //    NavMeshHit hit;
-    //    NavMesh.SamplePosition(randDir, out hit, dist, layerMask);
-    //    return hit.position;
-    //}
-    //bool CanSeePlayer()
-    //{
-    //    Ray ray = new Ray(transform.position, playerDir);
-    //    RaycastHit hit;
-
-    //    LayerMask layerMask = ~LayerMask.GetMask("Enemy");
-
-    //    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-    //    {
-    //        Debug.Log("Raycast hit: " + hit.collider.gameObject.name);
-    //        if (hit.collider.CompareTag("Player"))
-    //        {
-    //            return true; 
-    //        }
-    //    }
-    //    return false; 
-    //}
+    } 
     IEnumerator attack()
     {
         isAttacking = true;
