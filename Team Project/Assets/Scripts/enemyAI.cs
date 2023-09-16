@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyAI : MonoBehaviour, IDamage
+public class enemyAI : MonoBehaviour, IDamage, IPhysics
 {
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
@@ -31,15 +31,18 @@ public class enemyAI : MonoBehaviour, IDamage
     float angleToPlayer;
     bool wanderDestination;
     Vector3 startingPos;
+    enemySpawner spawner;
     void Start()
     {
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         gameManager.instance.updateGameGoal(1);
+
+        spawner = FindObjectOfType<enemySpawner>();
     }
     void Update()
     {
-        float agentVel = agent.velocity.normalized.magnitude;
+        //float agentVel = agent.velocity.normalized.magnitude;
 
         if (playerInRange && !canViewPlayer())
         {
@@ -50,7 +53,7 @@ public class enemyAI : MonoBehaviour, IDamage
             StartCoroutine(wander());
         }
     }
-    IEnumerator wander()
+   IEnumerator wander()
     {
         if (agent.remainingDistance < 0.05f && !wanderDestination)
         {
@@ -116,6 +119,10 @@ public class enemyAI : MonoBehaviour, IDamage
         {
             gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
+        }
+        if(spawner != null)
+        {
+            spawner.EnemyDestroyed();
         }
     }
     IEnumerator flashDamage()

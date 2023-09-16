@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201698798847590297}
   m_Layer: 0
-  m_Name: Attack Pos (1)
+  m_Name: Attack Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 4992389878966111137}
   m_Layer: 7
   m_Name: Enemy Type 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,7 +699,7 @@ Transform:
   m_GameObject: {fileID: 3724502153410547247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.000002, y: 0, z: 28.75}
+  m_LocalPosition: {x: -22.000002, y: 0, z: 29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -722,14 +722,15 @@ MonoBehaviour:
   model: {fileID: 6822325971712528143}
   agent: {fileID: 4992389878966111137}
   attackPos: {fileID: 6707865561457549028}
-  headPos: {fileID: 0}
+  headPos: {fileID: 5009617318400160558}
   HP: 10
   targetFaceSpeed: 8
-  viewAngle: 45
-  wanderRadius: 50
+  viewAngle: 90
+  wanderDist: 25
   wanderTime: 25
   attackRate: 0.5
-  shuriken: {fileID: 2125998969662733187, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
+  attackAngle: 0
+  shuriken: {fileID: 1160868674473882, guid: b9761520b2d2c83438fad794f3d075a5, type: 3}
 --- !u!95 &1993402249443447335
 Animator:
   serializedVersion: 5
