@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171162515900327071}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5862686, y: -0.5862551, z: 0.39534846, w: 0.39533997}
-  m_LocalPosition: {x: -1.3629172, y: 0.2240628, z: -0.6936363}
+  m_LocalRotation: {x: -0.58621806, y: -0.58621806, z: 0.39540917, w: 0.39540917}
+  m_LocalPosition: {x: 1.1601782, y: 0.9740716, z: 0.86570704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8886490415159093422}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -112, z: 90}
 --- !u!1 &316117858635572445
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 6822325971712528143}
   agent: {fileID: 4992389878966111137}
+  animate: {fileID: 1993402249443447335}
   attackPos: {fileID: 6707865561457549028}
   headPos: {fileID: 5009617318400160558}
   HP: 10
@@ -728,6 +729,7 @@ MonoBehaviour:
   viewAngle: 90
   wanderDist: 25
   wanderTime: 25
+  animSpeed: 0
   attackRate: 0.5
   attackAngle: 10
   shurikens:
@@ -745,10 +747,10 @@ Animator:
   m_GameObject: {fileID: 3724502153410547247}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a6e1b293f7ed5584fa548ddde966e03e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be60682f6c2041f46b9bffcee40d5a36, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

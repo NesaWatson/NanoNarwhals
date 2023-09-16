@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 1818120948887200676}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5862686, y: -0.5862551, z: 0.39534846, w: 0.39533997}
-  m_LocalPosition: {x: -2.1519458, y: 0.22406895, z: -0.74297}
+  m_LocalPosition: {x: 0.4644314, y: 0.47407308, z: 0.58444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 2363759795244505515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.3251877, y: -2.733556, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431,7 +431,7 @@ SkinnedMeshRenderer:
   - {fileID: 3320261534760938442}
   - {fileID: 5615182896333807259}
   m_BlendShapeWeights: []
-  m_RootBone: {fileID: 6898563365159961160}
+  m_RootBone: {fileID: 6171214680404329815}
   m_AABB:
     m_Center: {x: 0.0003452897, y: 0.5268217, z: 0.060830086}
     m_Extent: {x: 1.3242548, y: 1.5759385, z: 0.52433443}
@@ -1419,6 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 7318902349036753072}
   agent: {fileID: 4187214775143249653}
+  animate: {fileID: 3332614678009233132}
   attackPos: {fileID: 4587804159985772607}
   headPos: {fileID: 2106083819725465087}
   HP: 10
@@ -1426,10 +1427,11 @@ MonoBehaviour:
   viewAngle: 90
   wanderDist: 25
   wanderTime: 25
+  animSpeed: 3
   attackRate: 0.5
   attackAngle: 10
   shurikens:
-  - {fileID: 0}
+  - {fileID: 1187546458036812, guid: d5aeb9c866c9c56428af104ef949e9ca, type: 3}
 --- !u!95 &3332614678009233132
 Animator:
   serializedVersion: 5
@@ -1440,10 +1442,10 @@ Animator:
   m_GameObject: {fileID: 8171132882541610713}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a6e1b293f7ed5584fa548ddde966e03e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0524c7ca61fc371489c5c18d52e57e79, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

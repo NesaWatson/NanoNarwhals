@@ -50,8 +50,9 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     }
     void Update()
     {
-        //float agentVel = agent.velocity.normalized.magnitude;
+        float agentVel = agent.velocity.normalized.magnitude;
 
+        animate.SetFloat("Speed", Mathf.Lerp(animate.GetFloat("Speed"), agentVel, Time.deltaTime + animSpeed));
       
         if(playerInRange && canViewPlayer())
         {

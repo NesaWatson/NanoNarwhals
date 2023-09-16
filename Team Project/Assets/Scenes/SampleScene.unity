@@ -1897,7 +1897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1141419475053177410, guid: 11bbef250431d8f4284036840658005b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1141419475053177410, guid: 11bbef250431d8f4284036840658005b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2324,6 +2324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 0}
   agent: {fileID: 0}
+  animate: {fileID: 0}
   attackPos: {fileID: 0}
   headPos: {fileID: 0}
   HP: 0
@@ -2331,6 +2332,7 @@ MonoBehaviour:
   viewAngle: 0
   wanderDist: 0
   wanderTime: 0
+  animSpeed: 0
   attackRate: 0
   attackAngle: 0
   shurikens:
