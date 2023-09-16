@@ -1427,8 +1427,9 @@ MonoBehaviour:
   wanderDist: 25
   wanderTime: 25
   attackRate: 0.5
-  attackAngle: 0
-  shuriken: {fileID: 2125998969662733187, guid: 52f1991629cc5d041a6c58cc84d556d9, type: 3}
+  attackAngle: 10
+  shurikens:
+  - {fileID: 0}
 --- !u!95 &3332614678009233132
 Animator:
   serializedVersion: 5

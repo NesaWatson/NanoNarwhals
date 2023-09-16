@@ -12,29 +12,32 @@ public class shuriken : MonoBehaviour
 
     private GameObject shooter;
 
-    public void setShooter(GameObject shooter)
+    public void SetShooter(GameObject shooter)
     {
         this.shooter = shooter; 
     }
     void Start()
     {
-        rb.velocity = (gameManager.instance.player.transform.position - transform.forward).normalized * speed;
+        rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
         Destroy(gameObject, destroyTime);
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.isTrigger)
+        //if(other.isTrigger)
+        //{
+        //    return;
+        //}
+        if (other.CompareTag("Player") && other.gameObject != shooter)
         {
-            return;
-        }
-        Debug.Log("Shuriken collided with: " + other.name);
+            Debug.Log("Shuriken collided with: " + other.name);
 
-        IDamage damageable = other.GetComponent<IDamage>();
+            IDamage damageable = other.GetComponent<IDamage>();
 
-        if (damageable != null && other.gameObject != shooter)
-        {
-            Debug.Log("Shuriken damaged: " + other.name);
-            damageable.takeDamage(damage);
+            if (damageable != null && other.gameObject != shooter)
+            {
+                Debug.Log("Shuriken damaged: " + other.name);
+                damageable.takeDamage(damage);
+            }
         }
 
         Destroy(gameObject); 

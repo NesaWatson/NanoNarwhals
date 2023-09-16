@@ -121,6 +121,7 @@ public class playerController : MonoBehaviour, IDamage
     {
 
         HP -= damage;
+        Debug.Log("Player HP:" + HP);
 
         if (HP <= 0)
         {

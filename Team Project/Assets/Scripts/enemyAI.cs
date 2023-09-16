@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [Header("----- Components -----")]
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Animator animate;
     [SerializeField] Transform attackPos;
     [SerializeField] Transform headPos;
 
@@ -17,11 +19,12 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [Range(45, 180)][SerializeField] int viewAngle;
     [Range(5, 25)][SerializeField] int wanderDist;
     [Range(5, 25)][SerializeField] int wanderTime;
+    [SerializeField] float animSpeed; 
 
     [Header("----- Weapon Stats -----")]
     [SerializeField] float attackRate;
-    [SerializeField] int attackAngle; 
-    [SerializeField] GameObject shuriken;
+    [SerializeField] int attackAngle;
+    [SerializeField] GameObject[] shurikens;
 
     Vector3 playerDir;
     Vector3 pushBack;
@@ -32,28 +35,54 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     bool wanderDestination;
     Vector3 startingPos;
     enemySpawner spawner;
+    Transform playerTransform;
+    bool isAlerted;
     void Start()
     {
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
         gameManager.instance.updateGameGoal(1);
 
+        playerTransform = gameManager.instance.player.transform;
         spawner = FindObjectOfType<enemySpawner>();
+
+        enemyManager.instance.registerAlertedEnemy(this);
     }
     void Update()
     {
         //float agentVel = agent.velocity.normalized.magnitude;
 
-        if (playerInRange && !canViewPlayer())
+      
+        if(playerInRange && canViewPlayer())
         {
+            setAlerted(playerDir);
+            
+            if (!isAttacking && angleToPlayer <= attackAngle)
+            {
+
+                StartCoroutine(attack());
+            }
+        }
+        else
+        {
+            StopCoroutine(attack());
+            isAttacking = false;
             StartCoroutine(wander());
         }
-        else if(!playerInRange)
+        //else if(playerInRange && canViewPlayer())
+        //{
+        //    setAlerted(playerDir);
+        //}
+    }
+    public void setAlerted(Vector3 playerPos)
+    {
+        if (!isAlerted)
         {
-            StartCoroutine(wander());
+            isAlerted = true;
+            agent.SetDestination(playerPos);
         }
     }
-   IEnumerator wander()
+    IEnumerator wander()
     {
         if (agent.remainingDistance < 0.05f && !wanderDestination)
         {
@@ -86,7 +115,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             {
                 agent.stoppingDistance = stoppingDistOrig;
                 agent.SetDestination(gameManager.instance.player.transform.position);
-
+                enemyManager.instance.alertAllEnemies(gameManager.instance.player.transform.position);
                 if (agent.remainingDistance <= agent.stoppingDistance)
                 {
                     faceTarget();
@@ -104,9 +133,24 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     } 
     IEnumerator attack()
     {
-        isAttacking = true;
-        Instantiate(shuriken, attackPos.position, transform.rotation); 
-        yield return new WaitForSeconds(attackRate);
+        while (playerInRange)
+        {
+            isAttacking = true;
+
+            int randomIndex = Random.Range(0, shurikens.Length);
+            GameObject seletedShuriken = shurikens[randomIndex];
+
+            Instantiate(seletedShuriken, attackPos.position, transform.rotation)
+            .GetComponent<shuriken>()
+                .SetShooter(gameObject);
+            //shuriken shurikenScript = newShuriken.GetComponent<shuriken>();
+            
+            //if(shurikenScript != null )
+            //{
+            //    shurikenScript.SetShooter(gameObject);
+            //}
+            yield return new WaitForSeconds(attackRate);
+        }
         isAttacking = false; 
     }
     public void takeDamage(int amount)
@@ -135,6 +179,13 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     {
         Quaternion rot = Quaternion.LookRotation(playerDir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
+    }
+    void onDestory()
+    {
+        if (enemyManager.instance != null)
+        {
+            enemyManager.instance.unregisteredAlertedEnemies(this);
+        }
     }
     public void physics(Vector3 dir)
     {
