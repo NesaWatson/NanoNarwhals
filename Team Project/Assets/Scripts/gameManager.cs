@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class gameManager : MonoBehaviour
 {
@@ -9,10 +11,14 @@ public class gameManager : MonoBehaviour
     public GameObject player;
     public playerController playerScript;
 
+    public Image playerHPbar;
+    [SerializeField] TMP_Text enemiesRemainingText;
+
     [SerializeField] GameObject activeMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject loseMenu;
+    [SerializeField] GameObject playerFlashDamage;
 
     public GameObject playerSpawnPos;
 
@@ -65,6 +71,8 @@ public class gameManager : MonoBehaviour
     {
         enemiesRemaining += amount;
 
+        enemiesRemainingText.text = enemiesRemaining.ToString("0");
+
         if (enemiesRemaining <= 0)
         {
             StartCoroutine(youWin());
@@ -75,5 +83,12 @@ public class gameManager : MonoBehaviour
         statePause();
         activeMenu = loseMenu;
         activeMenu.SetActive(isPaused);
+    }
+
+    public IEnumerator playerDamageFlash()
+    {
+        playerFlashDamage.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        playerFlashDamage.SetActive(false);
     }
 }
