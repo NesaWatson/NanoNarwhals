@@ -10,12 +10,12 @@ public class shuriken : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
 
-    private GameObject shooter;
+    //private GameObject shooter;
 
-    public void SetShooter(GameObject shooter)
-    {
-        this.shooter = shooter; 
-    }
+    //public void SetShooter(GameObject shooter)
+    //{
+    //    this.shooter = shooter; 
+    //}
     void Start()
     {
         rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
@@ -23,24 +23,18 @@ public class shuriken : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if(other.isTrigger)
-        //{
-        //    return;
-        //}
-        if (other.CompareTag("Player") && other.gameObject != shooter)
+        if (other.isTrigger)
         {
-            Debug.Log("Shuriken collided with: " + other.name);
+            return;
+        }
+        IDamage damageable = other.GetComponent<IDamage>();
 
-            IDamage damageable = other.GetComponent<IDamage>();
-
-            if (damageable != null && other.gameObject != shooter)
-            {
-                Debug.Log("Shuriken damaged: " + other.name);
-                damageable.takeDamage(damage);
-            }
+        if (damageable != null)
+        {
+            damageable.takeDamage(damage);
         }
 
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 
 }

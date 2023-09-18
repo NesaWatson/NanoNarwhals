@@ -24,7 +24,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [Header("----- Weapon Stats -----")]
     [SerializeField] float attackRate;
     [SerializeField] int attackAngle;
-    [SerializeField] GameObject[] shurikens;
+    [SerializeField] GameObject shuriken;
 
     Vector3 playerDir;
     Vector3 pushBack;
@@ -134,24 +134,8 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     } 
     IEnumerator attack()
     {
-        while (playerInRange)
-        {
-            isAttacking = true;
-
-            int randomIndex = Random.Range(0, shurikens.Length);
-            GameObject seletedShuriken = shurikens[randomIndex];
-
-            Instantiate(seletedShuriken, attackPos.position, transform.rotation)
-            .GetComponent<shuriken>()
-                .SetShooter(gameObject);
-            //shuriken shurikenScript = newShuriken.GetComponent<shuriken>();
-            
-            //if(shurikenScript != null )
-            //{
-            //    shurikenScript.SetShooter(gameObject);
-            //}
-            yield return new WaitForSeconds(attackRate);
-        }
+        isAttacking = true;
+        yield return new WaitForSeconds(attackRate);
         isAttacking = false; 
     }
     public void takeDamage(int amount)
