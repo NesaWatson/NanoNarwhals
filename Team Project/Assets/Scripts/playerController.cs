@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour, IDamage
 {
-    
+    [Header("~~~~~ Components ~~~~~")]
     [SerializeField] CharacterController characterController;
 
+    [Header("~~~~~ Player Stats ~~~~~")]
     [SerializeField] int HP;
     [SerializeField] float characterSpeed;
     [SerializeField] float jumpHeight;
     [SerializeField] int jumpAmount;
     [SerializeField] float gravityPull;
-
     [SerializeField] float crouchSpeed;
     [SerializeField] float crouchHeight;
     [SerializeField] float standingHeight;
 
     private bool isCrouching = false;
 
-
+    [Header("~~~~~ Weapon Stats ~~~~~")]
     [SerializeField] float fireRate;
     [SerializeField] int gunDamage;
     [SerializeField] int shootDistance;
@@ -31,9 +31,11 @@ public class playerController : MonoBehaviour, IDamage
     private Vector3 movement;
     private Vector3 pushBack;
     private Vector3 velocity;
+    int originalHP;
 
     void Start()
     {
+        originalHP = HP;
         spawnPlayer();
     }
     
@@ -42,7 +44,7 @@ public class playerController : MonoBehaviour, IDamage
         HandleMovement();
         HandleCrouch();
 
-        if (Input.GetButton("Fire1") && !isFiring) 
+        if (Input.GetButton("Shoot") && !isFiring) 
         {
             StartCoroutine(shoot());
         }
@@ -121,6 +123,7 @@ public class playerController : MonoBehaviour, IDamage
     {
 
         HP -= damage;
+        StartCoroutine(gameManager.instance.playerDamageFlash());
         Debug.Log("Player HP:" + HP);
 
         if (HP <= 0)
