@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Team Project",
+    "\\Team Project\\Assets",
+    "\\Team Project\\Assets\\Scripts"
   ],
+  "SelectedNode": "\\Team Project\\Assets\\Scripts\\IDamage.cs",
   "PreviewInSolutionExplorer": false
 }

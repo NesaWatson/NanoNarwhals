@@ -40,7 +40,7 @@ public class enemySpawner : MonoBehaviour
         currentEnemyCount++;
 
         //int randomIndex = Random.Range(0, shurikens.Length);
-       // GameObject seletedShuriken = shurikens[randomIndex];
+        //GameObject seletedShuriken = shurikens[randomIndex];
 
         //Instantiate(seletedShuriken, attackPos.position, transform.rotation)
         //.GetComponent<shuriken>()

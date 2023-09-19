@@ -10,12 +10,12 @@ public class shuriken : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
 
-    //private GameObject shooter;
+    private GameObject shooter;
 
-    //public void SetShooter(GameObject shooter)
-    //{
-    //    this.shooter = shooter; 
-    //}
+    public void SetShooter(GameObject shooter)
+    {
+        this.shooter = shooter;
+    }
     void Start()
     {
         rb.velocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
