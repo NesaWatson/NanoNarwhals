@@ -12,14 +12,15 @@ public class gameManager : MonoBehaviour
     public playerController playerScript;
 
     public Image playerHPbar;
-    [SerializeField] TMP_Text enemiesRemainingText;
+    
 
     [SerializeField] GameObject activeMenu;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject loseMenu;
     [SerializeField] GameObject playerFlashDamage;
-
+    [SerializeField] TMP_Text enemiesRemainingText;
+    
     public GameObject playerSpawnPos;
 
     [SerializeField] int enemiesRemaining;
@@ -71,7 +72,7 @@ public class gameManager : MonoBehaviour
     {
         enemiesRemaining += amount;
 
-        enemiesRemainingText.text = enemiesRemaining.ToString("0");
+        enemiesRemainingText.text = enemiesRemaining.ToString("F0");
 
         if (enemiesRemaining <= 0)
         {
