@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour, IDamage
     private bool isCrouching = false;
 
     [Header("~~~~~ Weapon Stats ~~~~~")]
+    [SerializeField] GameObject itemModel;
     [SerializeField] float fireRate;
     [SerializeField] int gunDamage;
     [SerializeField] int shootDistance;
@@ -136,6 +137,16 @@ public class playerController : MonoBehaviour, IDamage
         characterController.enabled = false;
         transform.position = gameManager.instance.playerSpawnPos.transform.position;
         characterController.enabled = true;
+    }
+
+    public void itemPickup(ItemStats item)
+    {
+        gunDamage = item.gunDamage;
+        shootDistance = item.shootDistance;
+        fireRate = item.fireRate;
+
+        itemModel.GetComponent<MeshFilter>().sharedMesh = item.model.GetComponent<MeshFilter>().sharedMesh;
+        itemModel.GetComponent<Renderer>().sharedMaterial = item.model.GetComponent<Renderer>().sharedMaterial;
     }
 }
 
