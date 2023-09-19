@@ -2335,15 +2335,7 @@ MonoBehaviour:
   animSpeed: 0
   attackRate: 0
   attackAngle: 0
-  shurikens:
-  - {fileID: 1160868674473882, guid: b9761520b2d2c83438fad794f3d075a5, type: 3}
-  - {fileID: 1245360488091752, guid: 4f364019ba9360f4580a8b3cb3c78a29, type: 3}
-  - {fileID: 1406397516143562, guid: 83428edc21ce0b642a3d83635ec0a61a, type: 3}
-  - {fileID: 1187546458036812, guid: d5aeb9c866c9c56428af104ef949e9ca, type: 3}
-  - {fileID: 1087725691103300, guid: 7a62b110ef6f55c46adcd43700eecaff, type: 3}
-  - {fileID: 1338729847860026, guid: f0f6b27992b99c945a250c1186806cec, type: 3}
-  - {fileID: 1959061349309894, guid: 79d1b50df808eec47bc58631189052ba, type: 3}
-  - {fileID: 1546896064175300, guid: c30ca198b87a35e41858d949dcf5cca3, type: 3}
+  shuriken: {fileID: 0}
 --- !u!1001 &1388894233
 PrefabInstance:
   m_ObjectHideFlags: 0
