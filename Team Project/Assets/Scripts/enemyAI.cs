@@ -50,25 +50,45 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     }
     void Update()
     {
-        float agentVel = agent.velocity.normalized.magnitude;
-
-        animate.SetFloat("Speed", Mathf.Lerp(animate.GetFloat("Speed"), agentVel, Time.deltaTime + animSpeed));
-      
-        if(playerInRange && canViewPlayer())
+        if (agent.isActiveAndEnabled)
         {
-            setAlerted(playerDir);
-            
-            if (!isAttacking && angleToPlayer <= attackAngle)
+
+            //float agentVel = agent.velocity.normalized.magnitude;
+            ////anim.SetFloat("string name", float) // .magnitude ignores +/- numbers
+            //animate.SetFloat("Speed", Mathf.Lerp(animate.GetFloat("Speed"), agentVel, Time.deltaTime + animSpeed));
+
+
+            //if (playerInRange && !canViewPlayer())
+            //{
+            //    StartCoroutine(wander());
+            //}
+            //else if(playerInRange && canViewPlayer())
+            //{
+            //    StartCoroutine(attack());
+            //}
+            //else if (!playerInRange)
+            //{
+            //    StartCoroutine(wander());
+            //}
+            float agentVel = agent.velocity.normalized.magnitude;
+
+            animate.SetFloat("Speed", Mathf.Lerp(animate.GetFloat("Speed"), agentVel, Time.deltaTime + animSpeed));
+
+            if (playerInRange && canViewPlayer())
             {
+                setAlerted(playerDir);
+                if (!isAttacking && angleToPlayer <= attackAngle)
+                {
 
-                StartCoroutine(attack());
+                    StartCoroutine(attack());
+                }
             }
-        }
-        else
-        {
-            StopCoroutine(attack());
-            isAttacking = false;
-            StartCoroutine(wander());
+            else
+            {
+                StopCoroutine(attack());
+                isAttacking = false;
+                StartCoroutine(wander());
+            }
         }
         //else if(playerInRange && canViewPlayer())
         //{
@@ -83,6 +103,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             agent.SetDestination(playerPos);
         }
     }
+    private GameObject shooter;
     IEnumerator wander()
     {
         if (agent.remainingDistance < 0.05f && !wanderDestination)
@@ -134,9 +155,13 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     } 
     IEnumerator attack()
     {
-        isAttacking = true;
-        yield return new WaitForSeconds(attackRate);
-        isAttacking = false; 
+        while(playerInRange)
+        {
+            isAttacking = true;
+            Instantiate(shuriken, attackPos.position, transform.rotation);
+            yield return new WaitForSeconds(attackRate);
+        }
+        isAttacking= false;
     }
     public void takeDamage(int amount)
     {
@@ -154,6 +179,10 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             spawner.EnemyDestroyed();
         }
     }
+    public void createShuriken()
+    {
+        Instantiate(shuriken, attackPos.position, transform.rotation);
+    }
     IEnumerator flashDamage()
     {
         model.material.color = Color.red;
@@ -165,13 +194,13 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
         Quaternion rot = Quaternion.LookRotation(playerDir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * targetFaceSpeed);
     }
-    void onDestory()
-    {
-        if (enemyManager.instance != null)
-        {
-            enemyManager.instance.unregisteredAlertedEnemies(this);
-        }
-    }
+    //void onDestory()
+    //{
+    //    if (enemyManager.instance != null)
+    //    {
+    //        enemyManager.instance.unregisteredAlertedEnemies(this);
+    //    }
+    //}
     public void physics(Vector3 dir)
     {
         agent.velocity += dir / 3;
