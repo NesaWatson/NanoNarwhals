@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 3724502153410547247, guid: 322e67053bc7331489d664ecdc18d5bd, type: 3}
+  - {fileID: 6533488675086173620, guid: a98f4bb0a79446a4cb2f4831af942503, type: 3}
   spawnInterval: 5
   maxEnemies: 5
   currentEnemyCount: 0
   spawnRadius: 90
+  shurikens:
+  - {fileID: 1406397516143562, guid: 83428edc21ce0b642a3d83635ec0a61a, type: 3}
