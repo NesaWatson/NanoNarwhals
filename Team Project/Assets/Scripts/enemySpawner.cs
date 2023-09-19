@@ -11,7 +11,9 @@ public class enemySpawner : MonoBehaviour
 
     [SerializeField] int currentEnemyCount;
     [SerializeField] float spawnRadius;
-  
+    [SerializeField] GameObject[] shurikens;
+
+
     private float spawnTimer;
     void Update()
     {
@@ -36,6 +38,19 @@ public class enemySpawner : MonoBehaviour
         GameObject enemy = Instantiate(selectedEnemyPrefab, randomSpawnPosition, Quaternion.identity);
        
         currentEnemyCount++;
+
+        //int randomIndex = Random.Range(0, shurikens.Length);
+        //GameObject seletedShuriken = shurikens[randomIndex];
+
+        //Instantiate(seletedShuriken, attackPos.position, transform.rotation)
+        //.GetComponent<shuriken>()
+        //    .SetShooter(gameObject);
+        //shuriken shurikenScript = newShuriken.GetComponent<shuriken>();
+
+        //if(shurikenScript != null )
+        //{
+        //    shurikenScript.SetShooter(gameObject);
+        //}
     }
     public void EnemyDestroyed()
     {

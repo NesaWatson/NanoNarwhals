@@ -729,14 +729,10 @@ MonoBehaviour:
   viewAngle: 90
   wanderDist: 25
   wanderTime: 25
-  animSpeed: 0
+  animSpeed: 2
   attackRate: 0.5
   attackAngle: 10
-  shurikens:
-  - {fileID: 1959061349309894, guid: 79d1b50df808eec47bc58631189052ba, type: 3}
-  - {fileID: 1546896064175300, guid: c30ca198b87a35e41858d949dcf5cca3, type: 3}
-  - {fileID: 1338729847860026, guid: f0f6b27992b99c945a250c1186806cec, type: 3}
-  - {fileID: 1087725691103300, guid: 7a62b110ef6f55c46adcd43700eecaff, type: 3}
+  shuriken: {fileID: 1187546458036812, guid: d5aeb9c866c9c56428af104ef949e9ca, type: 3}
 --- !u!95 &1993402249443447335
 Animator:
   serializedVersion: 5

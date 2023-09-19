@@ -14,7 +14,7 @@ public class shuriken : MonoBehaviour
 
     public void SetShooter(GameObject shooter)
     {
-        this.shooter = shooter; 
+        this.shooter = shooter;
     }
     void Start()
     {
@@ -23,24 +23,18 @@ public class shuriken : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if(other.isTrigger)
-        //{
-        //    return;
-        //}
-        if (other.CompareTag("Player") && other.gameObject != shooter)
+        if (other.isTrigger)
         {
-            Debug.Log("Shuriken collided with: " + other.name);
+            return;
+        }
+        IDamage damageable = other.GetComponent<IDamage>();
 
-            IDamage damageable = other.GetComponent<IDamage>();
-
-            if (damageable != null && other.gameObject != shooter)
-            {
-                Debug.Log("Shuriken damaged: " + other.name);
-                damageable.takeDamage(damage);
-            }
+        if (damageable != null)
+        {
+            damageable.takeDamage(damage);
         }
 
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 
 }
