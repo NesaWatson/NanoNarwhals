@@ -141,7 +141,7 @@ public class playerController : MonoBehaviour, IDamage
 
     public void itemPickup(ItemStats item)
     {
-        gunDamage = item.gunDamage;
+        gunDamage = item.itemDamage;
         shootDistance = item.shootDistance;
         fireRate = item.fireRate;
 

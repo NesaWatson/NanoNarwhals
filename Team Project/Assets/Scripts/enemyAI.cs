@@ -145,6 +145,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     {
         HP -= amount;
         StartCoroutine(stopMoving());
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {
