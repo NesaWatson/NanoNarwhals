@@ -427,7 +427,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 7400000
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -447,7 +447,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.39068773
+      - time: 0.23863636
         functionName: createShuriken
         data: 
         objectReferenceParameter: {fileID: 2565010500431963486, guid: fa7e0c6ae72452f4e86e18532e962a16, type: 3}
