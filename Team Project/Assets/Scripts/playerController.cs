@@ -93,7 +93,7 @@ public class playerController : MonoBehaviour, IDamage
 
         if (isCrouching)
         {
-            characterController.height = characterController.height/2;
+            characterController.height = crouchHeight;
             characterSpeed = crouchSpeed;
         }
         else characterController.height = standingHeight;

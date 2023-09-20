@@ -55,9 +55,9 @@ MonoBehaviour:
   jumpHeight: 5
   jumpAmount: 2
   gravityPull: -10
-  crouchSpeed: 0
-  crouchHeight: 0
-  standingHeight: 0
+  crouchSpeed: 8
+  crouchHeight: 1
+  standingHeight: 2
   itemModel: {fileID: 0}
   fireRate: 1
   gunDamage: 1
