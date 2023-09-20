@@ -42,12 +42,13 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     {
         startingPos = transform.position;
         stoppingDistOrig = agent.stoppingDistance;
-        gameManager.instance.updateGameGoal(1);
+       
 
         playerTransform = gameManager.instance.player.transform;
         spawner = FindObjectOfType<enemySpawner>();
 
-        enemyManager.instance.AlertedEnemy(this);
+        enemyManager.instance.AlertedEnemy(this); 
+        gameManager.instance.updateGameGoal(1);
     }
     void Update()
     {

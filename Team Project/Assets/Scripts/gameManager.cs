@@ -31,8 +31,9 @@ public class gameManager : MonoBehaviour
     {
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
         playerScript = player.GetComponent<playerController>();
+        playerSpawnPos = GameObject.FindGameObjectWithTag("Player Spawn Pos");
+       
     }
 
     // Update is called once per frame
@@ -92,4 +93,7 @@ public class gameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerFlashDamage.SetActive(false);
     }
+   
+  
+   
 }
