@@ -60,10 +60,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             if (playerInRange && canViewPlayer())
             {
                 setAlerted(playerDir);
-                while(playerInRange)
-                {
-                    StartCoroutine(attack());
-                }
+                StartCoroutine(attack());
             }
             else if(!playerInRange)
             {
@@ -131,11 +128,12 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     } 
     IEnumerator attack()
     {
-       
+        while(playerInRange)
+        {
             isAttacking = true;
             animate.SetTrigger("Attack");
             yield return new WaitForSeconds(attackRate);
-       
+        }
         isAttacking= false;
     }
     public void takeDamage(int amount)
