@@ -18,14 +18,14 @@ public class enemyManager : MonoBehaviour
             enemy.setAlerted(playerPos);
         }
     }
-    public void registerAlertedEnemy(enemyAI enemy)
+    public void AlertedEnemy(enemyAI enemy)
     {
         if (!alertedEnemies.Contains(enemy))
         {
             alertedEnemies.Add(enemy);
         }
     }
-    public void unregisteredAlertedEnemies(enemyAI enemy)
+    public void UnalertedEnemies(enemyAI enemy)
     {
         alertedEnemies.Remove(enemy);
     }
