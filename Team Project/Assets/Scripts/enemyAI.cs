@@ -66,6 +66,10 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             {
                 StartCoroutine(wander());
             }
+            else
+            {
+                StartCoroutine(wander());
+            }
         }
     }
     public void setAlerted(Vector3 playerPos)
