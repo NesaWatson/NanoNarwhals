@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 4747335158545857533}
-  HP: 10
+  HP: 2
   characterSpeed: 15
   jumpHeight: 5
   jumpAmount: 2
@@ -58,6 +58,7 @@ MonoBehaviour:
   crouchSpeed: 0
   crouchHeight: 0
   standingHeight: 0
+  itemModel: {fileID: 0}
   fireRate: 1
   gunDamage: 1
   shootDistance: 5
