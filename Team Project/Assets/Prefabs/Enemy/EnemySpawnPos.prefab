@@ -50,5 +50,4 @@ MonoBehaviour:
   maxEnemies: 5
   currentEnemyCount: 0
   spawnRadius: 90
-  shurikens:
-  - {fileID: 1406397516143562, guid: 83428edc21ce0b642a3d83635ec0a61a, type: 3}
+  shurikens: {fileID: 2565010500431963486, guid: fa7e0c6ae72452f4e86e18532e962a16, type: 3}
