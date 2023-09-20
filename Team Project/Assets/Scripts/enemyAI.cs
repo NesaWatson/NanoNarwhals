@@ -171,12 +171,9 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
 
         if (HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
-        }
-        if(spawner != null)
-        {
-            spawner.EnemyDestroyed();
+            enemySpawner.Destroy(gameObject);
+            gameManager.instance.updateGameGoal(-1);
         }
     }
     public void createShuriken()

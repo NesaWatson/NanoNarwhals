@@ -36,10 +36,10 @@ public class enemySpawner : MonoBehaviour
         randomSpawnPosition.y = 0;
 
         GameObject enemy = Instantiate(selectedEnemyPrefab, randomSpawnPosition, Quaternion.identity);
-       
+
         currentEnemyCount++;
 
-      
+
     }
     public void EnemyDestroyed()
     {
