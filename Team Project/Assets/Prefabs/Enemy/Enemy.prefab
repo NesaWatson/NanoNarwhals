@@ -1179,7 +1179,7 @@ MonoBehaviour:
   animSpeed: 2
   attackRate: 0.5
   attackAngle: 10
-  shuriken: {fileID: 2565010500431963486, guid: fa7e0c6ae72452f4e86e18532e962a16, type: 3}
+  shuriken: {fileID: 6418955263109948712, guid: aa0f482a426fa704eb5aeedf322dd6c6, type: 3}
 --- !u!95 &7067437928346317386
 Animator:
   serializedVersion: 5

@@ -14,11 +14,11 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     [SerializeField] Transform headPos;
 
     [Header("----- Enemy Stats -----")]
-    [Range(1, 10)][SerializeField] int HP;
-    [Range(1, 10)][SerializeField] int targetFaceSpeed;
+    [Range(1, 30)][SerializeField] int HP;
+    [Range(1, 30)][SerializeField] int targetFaceSpeed;
     [Range(45, 180)][SerializeField] int viewAngle;
-    [Range(5, 25)][SerializeField] int wanderDist;
-    [Range(5, 25)][SerializeField] int wanderTime;
+    [Range(5, 50)][SerializeField] int wanderDist;
+    [Range(5, 50)][SerializeField] int wanderTime;
     [SerializeField] float animSpeed; 
 
     [Header("----- Weapon Stats -----")]
@@ -81,7 +81,6 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
             agent.SetDestination(playerPos);
         }
     }
-    private GameObject shooter;
     IEnumerator wander()
     {
         if (agent.remainingDistance < 0.05f && !wanderDestination)
@@ -145,6 +144,7 @@ public class enemyAI : MonoBehaviour, IDamage, IPhysics
     {
         HP -= amount;
         StartCoroutine(stopMoving());
+        agent.SetDestination(gameManager.instance.player.transform.position);
 
         if (HP <= 0)
         {

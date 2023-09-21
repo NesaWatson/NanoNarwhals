@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4979397142104626}
-  - component: {fileID: -1077200255327925860}
+  - component: {fileID: 5049244076773235918}
   - component: {fileID: 33025503579216102}
   - component: {fileID: 23273230052813832}
-  - component: {fileID: -1905453954573668613}
-  - component: {fileID: 3105614832341235715}
+  - component: {fileID: 6549891085146568607}
+  - component: {fileID: -3184913839216020124}
   m_Layer: 8
   m_Name: Shuriken1
   m_TagString: Shuriken
@@ -36,7 +36,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1077200255327925860
+--- !u!114 &5049244076773235918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35776f766d4735640b235572d556ed5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: -1905453954573668613}
+  rb: {fileID: 6549891085146568607}
   damage: 1
   speed: 1
   destroyTime: 3
@@ -102,7 +102,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &-1905453954573668613
+--- !u!54 &6549891085146568607
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +129,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &3105614832341235715
+--- !u!135 &-3184913839216020124
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

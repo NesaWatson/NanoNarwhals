@@ -7,7 +7,7 @@ public class shuriken : MonoBehaviour
     [SerializeField] Rigidbody rb; 
 
     [SerializeField] int damage;
-    [SerializeField] int speed;
+    [SerializeField] float speed;
     [SerializeField] int destroyTime;
 
     private GameObject shooter;
