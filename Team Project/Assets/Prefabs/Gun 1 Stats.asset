@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c0ee3aa3fe24d4d82f0ccf1efb1103, type: 3}
   m_Name: Gun 1 Stats
   m_EditorClassIdentifier: 
-  fireRate: 0
-  itemDamage: 0
-  shootDistance: 0
+  fireRate: 0.5
+  itemDamage: 2
+  shootDistance: 30
   ammoCur: 0
-  ammoMax: 0
-  model: {fileID: 0}
+  ammoMax: 200
+  model: {fileID: 5494625650325380441, guid: 944f765b84e4c4012876d61f4dfc7b5a, type: 3}
   hitEffect: {fileID: 0}
   shotSound: {fileID: 0}
