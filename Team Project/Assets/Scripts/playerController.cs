@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour, IDamage
     private bool isCrouching = false;
 
     [Header("~~~~~ Weapon Stats ~~~~~")]
+    [SerializeField] List<ItemStats> itemStats = new List<ItemStats>();
     [SerializeField] GameObject itemModel;
     [SerializeField] float fireRate;
     [SerializeField] int gunDamage;
@@ -33,6 +34,7 @@ public class playerController : MonoBehaviour, IDamage
     private Vector3 pushBack;
     private Vector3 velocity;
     int originalHP;
+    int itemSelected;
 
     void Start()
     {
@@ -141,12 +143,42 @@ public class playerController : MonoBehaviour, IDamage
 
     public void itemPickup(ItemStats item)
     {
+        itemStats.Add(item);
+
         gunDamage = item.itemDamage;
         shootDistance = item.shootDistance;
         fireRate = item.fireRate;
 
         itemModel.GetComponent<MeshFilter>().sharedMesh = item.model.GetComponent<MeshFilter>().sharedMesh;
         itemModel.GetComponent<Renderer>().sharedMaterial = item.model.GetComponent<Renderer>().sharedMaterial;
+
+        itemSelected = itemStats.Count - 1;
+    }
+
+    void changeItem()
+    {
+        gunDamage = itemStats[itemSelected].itemDamage;
+        shootDistance = itemStats[itemSelected].shootDistance;
+        fireRate -= itemStats[itemSelected].fireRate;
+
+        itemModel.GetComponent<MeshFilter>().sharedMesh = itemStats[itemSelected].model.GetComponent<MeshFilter>().sharedMesh;
+        itemModel.GetComponent<Renderer>().sharedMaterial = itemStats[itemSelected ].model.GetComponent<Renderer>().sharedMaterial;
+
+    }
+
+
+    void itemSelect()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && itemSelected < itemStats.Count - 1)
+        {
+            itemSelected++;
+            changeItem();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && itemSelected > 0)
+        {
+            itemSelected--;
+            changeItem();
+        }
     }
 }
 
