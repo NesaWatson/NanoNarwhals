@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4979397142104626}
-  - component: {fileID: -1077200255327925860}
   - component: {fileID: 33025503579216102}
   - component: {fileID: 23273230052813832}
   - component: {fileID: -1905453954573668613}
@@ -31,27 +30,15 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+<<<<<<< HEAD
+  m_LocalScale: {x: 3, y: 3, z: 3}
+=======
+  m_LocalScale: {x: 5, y: 5, z: 5}
+>>>>>>> d96cf20525ce14f5922585f31ec5b7effb8862bb
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1077200255327925860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160868674473882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35776f766d4735640b235572d556ed5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: -1905453954573668613}
-  damage: 1
-  speed: 1
-  destroyTime: 3
 --- !u!33 &33025503579216102
 MeshFilter:
   m_ObjectHideFlags: 0

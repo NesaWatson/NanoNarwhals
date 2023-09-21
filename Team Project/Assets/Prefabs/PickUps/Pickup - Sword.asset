@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2c0ee3aa3fe24d4d82f0ccf1efb1103, type: 3}
-  m_Name: Pickup - Shuriken
+  m_Name: Pickup - Sword
   m_EditorClassIdentifier: 
   fireRate: 0
   itemDamage: 0
   shootDistance: 0
   ammoCur: 0
   ammoMax: 0
-  model: {fileID: 1160868674473882, guid: b9761520b2d2c83438fad794f3d075a5, type: 3}
+  model: {fileID: 3457786219000376307, guid: b061fcb392ff70e4da923e8828e00a0e, type: 3}
   hitEffect: {fileID: 0}
   shotSound: {fileID: 0}
