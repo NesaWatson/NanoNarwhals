@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pickup - Sword
   m_EditorClassIdentifier: 
   fireRate: 0
-  itemDamage: 5
+  itemDamage: 0
   shootDistance: 0
   ammoCur: 0
   ammoMax: 0
