@@ -46,6 +46,7 @@ public class playerController : MonoBehaviour, IDamage
     {
         HandleMovement();
         HandleCrouch();
+        itemSelect();
 
         if (Input.GetButton("Shoot") && !isFiring) 
         {
